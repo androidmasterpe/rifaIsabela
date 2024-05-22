@@ -1,441 +1,493 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>  
-		 <title>Rifa da Maria Isabela</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	</head>
-	
+
+<head>
+	<title>Rifa da Maria Isabela</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+
 <script>
-function myFunction(bt) {
-         
-	 //Manda numero clicado para o formulario
-	  var x = document.getElementById(bt).innerText;  
-      document.getElementById("numero").value = parseInt(x, 10);
-      
-      //define o que enviar de acordo com o numero escolhido
-           if (x=>0 && x<=15){
-    	    $("#fralda").text("Um pacote de fralda P + um mimo ou um PIX no valor R$ 50,00");
-    	    document.getElementById("fraldaB").value = " P ";
-       	   }
-    	   if (x>15 && x<=55){
-    	    $("#fralda").text("Um pacote  de fralda M + um mimo ou um PIX no valor R$ 50,00");
-    	    document.getElementById("fraldaB").value = " M ";
-    	   }
-    	   if (x>55 && x<=80){
-    	    $("#fralda").text("Um pacote de fralda G + um mimo ou um PIX no valor R$ 50,00");
-    	    document.getElementById("fraldaB").value = " G ";
-    	   }
-		   if (x>80 && x<=100){
-    	    $("#fralda").text("Um pacote de fralda GG + um mimo ou um PIX no valor R$ 50,00");
-    	    document.getElementById("fraldaB").value = " GG ";
-    	   }
-     //atualiza os numeros
- /*    
-$.ajax({
-     async: false,
-     type: 'GET',
-     url: 
-     */
- jQuery.ajaxSetup({async:false});
-$.get("https://script.google.com/macros/s/AKfycbzi3RpSy_hJgDJ-D7Ed-t2lZf9J_G3B65Ui9BqoBs0I9cQvRwu7C1zT5EZ0dmVuU_RX2A/exec",
-	function(data) {   					
-		for(var i = 0; i < 79; i++) {   
-			var obj = data.user[i];      
-						  //console.log(obj.id);
-						  //alert(obj.numeto);
-			if (Number.isInteger(obj.numero)){  
-				var element= document.getElementById("btn"+i); 
-				if (typeof(element)!= 'undefined' && element!=null){
-					$("#"+"btn"+(obj.numero-1)).addClass("btn btn-danger").prop('disabled', true)
+	function myFunction(bt) {
+
+		//Manda numero clicado para o formulario
+		var x = document.getElementById(bt).innerText;
+		document.getElementById("numero").value = parseInt(x, 10);
+
+		//define o que enviar de acordo com o numero escolhido
+		 if (x => 0 && x <= 15) {
+			$("#fralda").text("Um pacote de fralda P + um mimo ou um PIX no valor R$ 50,00");
+			document.getElementById("fraldaB").value = " P ";
+		}
+		if (x > 15 && x <= 55) {
+			$("#fralda").text("Um pacote  de fralda M + um mimo ou um PIX no valor R$ 50,00");
+			document.getElementById("fraldaB").value = " M ";
+		}
+		if (x > 55 && x <= 80) {
+			$("#fralda").text("Um pacote de fralda G + um mimo ou um PIX no valor R$ 50,00");
+			document.getElementById("fraldaB").value = " G ";
+		}
+		if (x > 80 && x <= 100) {
+			$("#fralda").text("Um pacote de fralda GG + um mimo ou um PIX no valor R$ 50,00");
+			document.getElementById("fraldaB").value = " GG ";
+		} 
+		//atualiza os numeros
+		/*    
+	   $.ajax({
+			async: false,
+			type: 'GET',
+			url: 
+			*/
+		jQuery.ajaxSetup({ async: false });
+		$.get("https://script.google.com/macros/s/AKfycbzi3RpSy_hJgDJ-D7Ed-t2lZf9J_G3B65Ui9BqoBs0I9cQvRwu7C1zT5EZ0dmVuU_RX2A/exec",
+			function (data) {
+				for (var i = 0; i < 79; i++) {
+					var obj = data.user[i];
+					//console.log(obj.id);
+					//alert(obj.numeto);
+					if (Number.isInteger(obj.numero)) {
+						var element = document.getElementById("btn" + i);
+						if (typeof (element) != 'undefined' && element != null) {
+							$("#" + "btn" + (obj.numero - 1)).addClass("btn btn-danger").prop('disabled', true)
+						}
+					}
 				}
-			}
-		} 
-			 alert('status');
-			 }).fail(
-		function() {  
-			
-			//alert("Erro ao atualizar os números, tente mais tarde");
-			$("#div1").remove();
-			alert("Erro ao atualizar os números, tente mais tarde");
-			location.reload();
-		} 
-		); 
-		
-		 //alert("\nStatus: " + status);		        
- //tentando bloquear numero ja escolhido
-     if ($("#"+bt).hasClass("btn-danger")){
-	   alert("Este número ja foi escolhido, por favor selecione outro!")
-	 
-	  }else{ 
-		      $("#exampleModal").modal();
-		  }
+				alert('status');
+			}).fail(
+				function () {
+
+					//alert("Erro ao atualizar os números, tente mais tarde");
+					$("#div1").remove();
+					alert("Erro ao atualizar os números, tente mais tarde");
+					location.reload();
+				}
+			);
+
+		//alert("\nStatus: " + status);		        
+		//tentando bloquear numero ja escolhido
+		if ($("#" + bt).hasClass("btn-danger")) {
+			alert("Este número ja foi escolhido, por favor selecione outro!")
+
+		} else {
+			$("#exampleModal").modal();
+		}
 
 
-         /* Manda no texto do modal o que é preciso mandar para concorrer a rifa*/
-            
-jQuery.ajaxSetup({async:true});
+		/* Manda no texto do modal o que é preciso mandar para concorrer a rifa*/
 
-};
+		jQuery.ajaxSetup({ async: true });
+
+	};
 </script>
 <script>
-$(document).ready(function(){
-	 $window = $(window);
-    //Captura cada elemento section com o data-type "background"
-    $('section[data-type="background"]').each(function(){
-        var $scroll = $(this);   
-            //Captura o evento scroll do navegador e modifica o backgroundPosition de acordo com seu deslocamento.            
-            $(window).scroll(function() {
-                var yPos = -($window.scrollTop() / $scroll.data('speed')); 
-                var coords = '90% '+ yPos + 'px';
-                $scroll.css({ backgroundPosition: coords });    
-            });
-   });  
+	$(document).ready(function () {
+		$window = $(window);
+		//Captura cada elemento section com o data-type "background"
+		$('section[data-type="background"]').each(function () {
+			var $scroll = $(this);
+			//Captura o evento scroll do navegador e modifica o backgroundPosition de acordo com seu deslocamento.            
+			$(window).scroll(function () {
+				var yPos = -($window.scrollTop() / $scroll.data('speed'));
+				var coords = '90% ' + yPos + 'px';
+				$scroll.css({ backgroundPosition: coords });
+			});
+		});
 
-$.get("https://script.google.com/macros/s/AKfycbzi3RpSy_hJgDJ-D7Ed-t2lZf9J_G3B65Ui9BqoBs0I9cQvRwu7C1zT5EZ0dmVuU_RX2A/exec",
-	function(data) {   
+		$.get("https://script.google.com/macros/s/AKfycbzi3RpSy_hJgDJ-D7Ed-t2lZf9J_G3B65Ui9BqoBs0I9cQvRwu7C1zT5EZ0dmVuU_RX2A/exec",
+			function (data) {
 
-					  //alert("a");
-		for(var i = 0; i < 79; i++) {   
-			//apos encerar o tempo $("#"+"btn"+i).prop('disabled', true);  
-			var obj = data.user[i];      
-						  //console.log(obj.id);
-			if (Number.isInteger(obj.numero)){  
-				//alert(obj.id)
-				var element= document.getElementById("btn"+i); 
-				if (typeof(element)!= 'undefined' && element!=null){
-					$("#"+"btn"+(obj.numero-1)).addClass("btn btn-danger").prop('disabled', true);
-					//alert(obj.numero)
+				//alert("a");
+				for (var i = 0; i < 79; i++) {
+					//apos encerar o tempo $("#"+"btn"+i).prop('disabled', true);  
+					var obj = data.user[i];
+					//console.log(obj.id);
+					if (Number.isInteger(obj.numero)) {
+						//alert(obj.id)
+						var element = document.getElementById("btn" + i);
+						if (typeof (element) != 'undefined' && element != null) {
+							$("#" + "btn" + (obj.numero - 1)).addClass("btn btn-danger").prop('disabled', true);
+							//alert(obj.numero)
+						}
+					}
 				}
-			}
-		} 
-	}).fail(
-		function() {  
-			alert("Erro ao atualizar os números, tente mais tarde");
-			$("#div1").remove()
-			 //$(#div1).addClass("page-item disabled")
-		} 
-		); 
-  }
-);
-</script>	
+			}).fail(
+				function () {
+					alert("Erro ao atualizar os números, tente mais tarde");
+					$("#div1").remove()
+					//$(#div1).addClass("page-item disabled")
+				}
+			);
+	}
+	);
+</script>
 <style>
-#parallaxBar1{
-    height: 100% ;
-    background: url('fundo.png') ;
-    position: center;
-	background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+	#parallaxBar1 {
+		height: 100%;
+		background: url('fundo.png');
+		margin-top: -35px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-attachment: fixed;
+	}
 
+	.but {
+		max-width: 500px;
+	}
 
- .but { 
-  max-width: 500px;
-} 
- .butT { 
-  max-width: 400px;
-} 
-  .imgwh { 
-   max-width: 50%;
-  padding: 1em;
-}
+	.butT {
+		max-width: 400px;
+	}
 
-.headimage > img {
-  width: 100%;
-}
+	.imgwh {
+		max-width: 50%;
+		padding: 1em;
+	}
 
-#div1 {
-  height: auto;
-  max-width: 750px;
-  padding: 1em;
-  margin: 3px;
-}
-#div2 {
-  height: 300px;
-  max-width: 750px;
-  padding: 1em;
-  margin: auto;
-}
+	.headimage>img {
+		width: 100%;
+	}
 
-  .carousel-inner img {
-   height: 370px;
-  max-width: 750px;
-  padding: 1em;
-  margin: 3px;
-  
-  }
-  </style>
+	#div1 {
+		height: auto;
+		max-width: 750px;
+		padding: 1em;
+		margin: 3px;
+	}
+
+	#div2 {
+		height: 300px;
+		max-width: 750px;
+		padding: 1em;
+		margin: auto;
+	}
+
+	.carousel-inner img {
+		height: 370px;
+		max-width: 750px;
+		padding: 1em;
+		margin: 3px;
+
+	}
+</style>
+
 <body>
 	<section id="parallaxBar1" data-speed="20" data-type="background">
-	 
-   
-	<!-- Imagem inicial-->
-	
-	      <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	  <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	     <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	 
-	   
-	 
-	   
-	   
-   <div class="container">
-     <div class="card border-0 shadow my-5 ">
-      <div  class="page disabled text-center " style="overflow-x:auto">
-	    <div class="card-body p-5">
-         <h1 class="font-weight-light"></h1>
-         			<div class="container-fluid ">
-          <h3>
-RIFA DA <br><h3> <i style="font-size:24px" class="fa">&#xf004;</i> MARIA ISABELA <i style="font-size:24px" class="fa">&#xf004;</i></h3>
- <br>
-<h5>Junte-se à rifa de fraldas da Maria Isabela e faça parte desta linda jornada de acolhimento e carinho para dar as boas-vindas a essa pequena princesinha!<br></h5>
-
-       </div>
-      </div>
-    </div>
-   </div>	
 
 
-   
-	    <br>
-	
-
-	 
-<div class="container">
-     <div class="card border-0 shadow my-5 ">
-      <div  class="page disabled text-center " style="overflow-x:auto">
-	    <div class="card-body p-5">
-         <h1 class="font-weight-light"></h1>
-         			<div class="container-fluid ">
-				<h3><i style="font-size:24px" class="fa">&#xf004;</i> COMO FUNCIONA <i style="font-size:24px" class="fa">&#xf004;</i></h3> 
-				 <br>
-				<div align="left">
-	<h5>&nbsp &nbsp &nbsp &nbsp &nbsp <i class='fas fa-baby-carriage'></i> Escolha um número de 01 a 100 no quadro abaixo.<br><h5/>
-	<h5>&nbsp &nbsp &nbsp &nbsp &nbsp <i class='fas fa-baby-carriage'></i> Preencha os campos com seu nome, Whatssapp e 
-		modo de pagamento, clique em enviar.<br><h5/>
-    <h5>&nbsp &nbsp &nbsp &nbsp &nbsp <i class='fas fa-baby-carriage'></i> Cada Número = um pacote de fraldas + um mimo<br><h5/>
-	<h5>&nbsp &nbsp &nbsp &nbsp &nbsp <i class='fas fa-baby-carriage'></i> O tamanho da fralda estará indicado ao escolher o número.<br><h5/>
-	<h5>&nbsp &nbsp &nbsp &nbsp &nbsp <i class='fas fa-baby-carriage'></i> Ou você pode pagar realizando um PIX no valor de R$ 50.00<br><h5/>
-		<h5>&nbsp &nbsp &nbsp &nbsp &nbsp <i class='fas fa-baby-carriage'></i> CHAVE PIX email: jumariamilennna@gmail.com<br><h5/>
-		<h5>&nbsp &nbsp &nbsp &nbsp &nbsp <i class='fas fa-baby-carriage'></i> Ao realizar o PIX por favor enviar o comprovante para o Whatssapp (81) 98794-5617<br><h5/>
-		<h5>&nbsp &nbsp &nbsp &nbsp &nbsp <i class='fas fa-baby-carriage'></i> Não esqueça de deixar um recadinho para mim!<br><h5/>
-	<h5>&nbsp &nbsp &nbsp &nbsp &nbsp <i class='fas fa-baby-carriage'></i> Os números em vermelho já foram escolhidos<br><h5/>
-	</div>
-				<br>
-				      <br />
-<h5>Você pode enviar para a nossa casa ou combinar com o papai ou com a mamãe para ir buscar.<h5/>
-<h5>Nosso Endereço: Rua Ana Nery, 390, Tabatinga, Camaragibe/PE<h5/>
-<h5>CEP:54756-470<h5/>
-<br> 
-				 <br>
-					<h3><i style="font-size:24px" class="fa">&#xf004;</i> ESCOLHA SEU NÚMERO <i style="font-size:24px" class="fa">&#xf004;</i></h3>
-
-				<p></p>
-	 
-<div  align="center">
-   <div class="but " align="center">
-	   <br>
-        <button type="button" id="btn0" class="btn btn-primary"   onclick="myFunction(this.id)">01</button>
-        <button type="button" id="btn1" class="btn btn-primary"   onclick="myFunction(this.id)">02</button>
-        <button type="button" id="btn2" class="btn btn-primary"   onclick="myFunction(this.id)">03</button>
-        <button type="button" id="btn3" class="btn btn-primary"   onclick="myFunction(this.id)">04</button>
-        <button type="button" id="btn4" class="btn btn-primary"   onclick="myFunction(this.id)">05</button>
-        <button type="button" id="btn5" class="btn btn-primary"   onclick="myFunction(this.id)">06</button>
-        <button type="button" id="btn6" class="btn btn-primary"   onclick="myFunction(this.id)">07</button>
-        <button type="button" id="btn7" class="btn btn-primary"   onclick="myFunction(this.id)">08</button>
-        <button type="button" id="btn8" class="btn btn-primary"   onclick="myFunction(this.id)">09</button>
-        <button type="button" id="btn9" class="btn btn-primary"   onclick="myFunction(this.id)">10</button>
-        <button type="button" id="btn10" class="btn btn-primary"   onclick="myFunction(this.id)">11</button>
-        <button type="button" id="btn11" class="btn btn-primary"   onclick="myFunction(this.id)">12</button>
-        <button type="button" id="btn12" class="btn btn-primary"   onclick="myFunction(this.id)">13</button>
-        <button type="button" id="btn13" class="btn btn-primary"   onclick="myFunction(this.id)">14</button>
-        <button type="button" id="btn14" class="btn btn-primary"   onclick="myFunction(this.id)">15</button>
-        <button type="button" id="btn15" class="btn btn-primary"   onclick="myFunction(this.id)">16</button>
-        <button type="button" id="btn16" class="btn btn-primary"   onclick="myFunction(this.id)">17</button>
-        <button type="button" id="btn17" class="btn btn-primary"   onclick="myFunction(this.id)">18</button>
-        <button type="button" id="btn18" class="btn btn-primary"   onclick="myFunction(this.id)">19</button>
-        <button type="button" id="btn19" class="btn btn-primary"   onclick="myFunction(this.id)">20</button>
-        <button type="button" id="btn20" class="btn btn-primary"   onclick="myFunction(this.id)">21</button>
-        <button type="button" id="btn21" class="btn btn-primary"   onclick="myFunction(this.id)">22</button>
-        <button type="button" id="btn22" class="btn btn-primary"   onclick="myFunction(this.id)">23</button>
-        <button type="button" id="btn23" class="btn btn-primary"   onclick="myFunction(this.id)">24</button>
-        <button type="button" id="btn24" class="btn btn-primary"   onclick="myFunction(this.id)">25</button>
-        <button type="button" id="btn25" class="btn btn-primary"   onclick="myFunction(this.id)">26</button>
-        <button type="button" id="btn26" class="btn btn-primary"   onclick="myFunction(this.id)">27</button>
-        <button type="button" id="btn27" class="btn btn-primary"   onclick="myFunction(this.id)">28</button>
-        <button type="button" id="btn28" class="btn btn-primary"   onclick="myFunction(this.id)">29</button>
-        <button type="button" id="btn29" class="btn btn-primary"   onclick="myFunction(this.id)">30</button>
-        <button type="button" id="btn30" class="btn btn-primary"   onclick="myFunction(this.id)">31</button>
-        <button type="button" id="btn31" class="btn btn-primary"   onclick="myFunction(this.id)">32</button>
-        <button type="button" id="btn32" class="btn btn-primary"   onclick="myFunction(this.id)">33</button>
-        <button type="button" id="btn33" class="btn btn-primary"   onclick="myFunction(this.id)">34</button>
-        <button type="button" id="btn34" class="btn btn-primary"   onclick="myFunction(this.id)">35</button>
-        <button type="button" id="btn35" class="btn btn-primary"   onclick="myFunction(this.id)">36</button>
-        <button type="button" id="btn36" class="btn btn-primary"   onclick="myFunction(this.id)">37</button>
-        <button type="button" id="btn37" class="btn btn-primary"   onclick="myFunction(this.id)">38</button>
-        <button type="button" id="btn38" class="btn btn-primary"   onclick="myFunction(this.id)">39</button>
-        <button type="button" id="btn39" class="btn btn-primary"   onclick="myFunction(this.id)">40</button>
-        <button type="button" id="btn40" class="btn btn-primary"   onclick="myFunction(this.id)">41</button>
-        <button type="button" id="btn41" class="btn btn-primary"   onclick="myFunction(this.id)">42</button>
-        <button type="button" id="btn42" class="btn btn-primary"   onclick="myFunction(this.id)">43</button>
-        <button type="button" id="btn43" class="btn btn-primary"   onclick="myFunction(this.id)">44</button>
-        <button type="button" id="btn44" class="btn btn-primary"   onclick="myFunction(this.id)">45</button>
-        <button type="button" id="btn45" class="btn btn-primary"   onclick="myFunction(this.id)">46</button>
-        <button type="button" id="btn46" class="btn btn-primary"   onclick="myFunction(this.id)">47</button>
-        <button type="button" id="btn47" class="btn btn-primary"   onclick="myFunction(this.id)">48</button>
-        <button type="button" id="btn48" class="btn btn-primary"   onclick="myFunction(this.id)">49</button>
-        <button type="button" id="btn49" class="btn btn-primary"   onclick="myFunction(this.id)">50</button>
-		<button type="button" id="btn50" class="btn btn-primary"   onclick="myFunction(this.id)">51</button>
-        <button type="button" id="btn51" class="btn btn-primary"   onclick="myFunction(this.id)">52</button>
-        <button type="button" id="btn52" class="btn btn-primary"   onclick="myFunction(this.id)">53</button>
-        <button type="button" id="btn53" class="btn btn-primary"   onclick="myFunction(this.id)">54</button>
-        <button type="button" id="btn54" class="btn btn-primary"   onclick="myFunction(this.id)">55</button>
-        <button type="button" id="btn55" class="btn btn-primary"   onclick="myFunction(this.id)">56</button>
-        <button type="button" id="btn56" class="btn btn-primary"   onclick="myFunction(this.id)">57</button>
-        <button type="button" id="btn57" class="btn btn-primary"   onclick="myFunction(this.id)">58</button>
-        <button type="button" id="btn58" class="btn btn-primary"   onclick="myFunction(this.id)">59</button>
-        <button type="button" id="btn59" class="btn btn-primary"   onclick="myFunction(this.id)">60</button>
-        <button type="button" id="btn60" class="btn btn-primary"   onclick="myFunction(this.id)">61</button>
-        <button type="button" id="btn61" class="btn btn-primary"   onclick="myFunction(this.id)">62</button>
-        <button type="button" id="btn62" class="btn btn-primary"   onclick="myFunction(this.id)">63</button>
-        <button type="button" id="btn63" class="btn btn-primary"   onclick="myFunction(this.id)">64</button>
-        <button type="button" id="btn64" class="btn btn-primary"   onclick="myFunction(this.id)">65</button>
-        <button type="button" id="btn65" class="btn btn-primary"   onclick="myFunction(this.id)">66</button>
-        <button type="button" id="btn66" class="btn btn-primary"   onclick="myFunction(this.id)">67</button>
-        <button type="button" id="btn67" class="btn btn-primary"   onclick="myFunction(this.id)">68</button>
-        <button type="button" id="btn68" class="btn btn-primary"   onclick="myFunction(this.id)">69</button>
-        <button type="button" id="btn69" class="btn btn-primary"   onclick="myFunction(this.id)">70</button>
-        <button type="button" id="btn70" class="btn btn-primary"   onclick="myFunction(this.id)">71</button>
-        <button type="button" id="btn71" class="btn btn-primary"   onclick="myFunction(this.id)">72</button>
-        <button type="button" id="btn72" class="btn btn-primary"   onclick="myFunction(this.id)">73</button>
-        <button type="button" id="btn73" class="btn btn-primary"   onclick="myFunction(this.id)">74</button>
-        <button type="button" id="btn74" class="btn btn-primary"   onclick="myFunction(this.id)">75</button>
-        <button type="button" id="btn75" class="btn btn-primary"   onclick="myFunction(this.id)">76</button>
-        <button type="button" id="btn76" class="btn btn-primary"   onclick="myFunction(this.id)">77</button>
-        <button type="button" id="btn77" class="btn btn-primary"   onclick="myFunction(this.id)">78</button>
-        <button type="button" id="btn78" class="btn btn-primary"   onclick="myFunction(this.id)">79</button>
-        <button type="button" id="btn79" class="btn btn-primary"   onclick="myFunction(this.id)">80</button>
-        <button type="button" id="btn80" class="btn btn-primary"   onclick="myFunction(this.id)">81</button>
-        <button type="button" id="btn81" class="btn btn-primary"   onclick="myFunction(this.id)">82</button>
-        <button type="button" id="btn82" class="btn btn-primary"   onclick="myFunction(this.id)">83</button>
-        <button type="button" id="btn83" class="btn btn-primary"   onclick="myFunction(this.id)">84</button>
-        <button type="button" id="btn84" class="btn btn-primary"   onclick="myFunction(this.id)">85</button>
-        <button type="button" id="btn85" class="btn btn-primary"   onclick="myFunction(this.id)">86</button>
-        <button type="button" id="btn86" class="btn btn-primary"   onclick="myFunction(this.id)">87</button>
-        <button type="button" id="btn87" class="btn btn-primary"   onclick="myFunction(this.id)">88</button>
-        <button type="button" id="btn88" class="btn btn-primary"   onclick="myFunction(this.id)">89</button>
-        <button type="button" id="btn89" class="btn btn-primary"   onclick="myFunction(this.id)">90</button>
-        <button type="button" id="btn90" class="btn btn-primary"   onclick="myFunction(this.id)">91</button>
-        <button type="button" id="btn91" class="btn btn-primary"   onclick="myFunction(this.id)">92</button>
-        <button type="button" id="btn92" class="btn btn-primary"   onclick="myFunction(this.id)">93</button>
-        <button type="button" id="btn93" class="btn btn-primary"   onclick="myFunction(this.id)">94</button>
-        <button type="button" id="btn94" class="btn btn-primary"   onclick="myFunction(this.id)">95</button>
-        <button type="button" id="btn95" class="btn btn-primary"   onclick="myFunction(this.id)">96</button>
-        <button type="button" id="btn96" class="btn btn-primary"   onclick="myFunction(this.id)">97</button>
-        <button type="button" id="btn97" class="btn btn-primary"   onclick="myFunction(this.id)">98</button>
-        <button type="button" id="btn98" class="btn btn-primary"   onclick="myFunction(this.id)">99</button>
-        <button type="button" id="btn99" class="btn btn-primary"   onclick="myFunction(this.id)">100</button>
-  </div> 
-  </div>
-  <br>
-  <br>
-   <br>
-   <h3><i class="fa fa-gift"></i> PRÊMIO <i class="fa fa-gift"></i></h3>
-    <br>
-
-	<br>
-   <h3><i class="fa fa-gift"></i> UM PIX NO VALOR DE R$200,00 NO DIA 23/06/24 ÁS 19:00H<i class="fa fa-gift"></i></h3>
-    <br>
-<!--
-<div align="left">
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspBoa noite!<br/><h5/> 
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspA Mamãe pediu para passar um recadinho.<br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspEstão preparados?! <br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspHoje será o dia do sorteio. <br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspA Rifa/Chá de Fraldas foi um sucesso!❤️<br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspAgradecemos a todos pelo carinho.<br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspEsperamos poder nos reunir em breve.<br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspEstamos em contagem regressiva para a minha chegada. Enviaremos notícias do parto.<br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspAmanhã postaremos o vídeo do sorteio no site.<br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspEntregaremos ao sorteado um Cesto de Chocolates cheio de gostosuras! <br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspUm grande beijo a todos com muito carinho do Maria Isabela, Maria Aparecida, Milenna Camila, Papai e Mamãe.<br/><h5/>
-<h5>&nbsp &nbsp &nbsp &nbsp &nbspData do Sorteio 10/10/2020 - as 17h00<br/><h5/>
-	-->
-	</div>	
+		<!-- Imagem inicial-->
 
 
+		<div class="container">
+			<div class="card border-0 shadow my-5 ">
+				<div class="page disabled text-center " style="overflow-x:auto">
+					<div class="card-body p-5">
+						<div class="container-fluid ">
+							<h3> RIFA DA <h3>
+									<h2><i style="font-size:24px" class="fa">&#xf004;</i> MARIA ISABELA
+										<i style="font-size:24px" class="fa">&#xf004;</i>
+									</h2>
+									<p>Junte-se à rifa de fraldas da Maria Isabela e faça parte desta linda jornada de
+										acolhimento e carinho para dar as boas-vindas a essa pequena princesinha!<br>
+									</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-  <br /> 
- 
-<h3><i style="font-size:24px" class="fa">&#xf004;</i> Boa Sorte! <i style="font-size:24px" class="fa">&#xf004;</i><h3/>
-				<!--<img class="d-block  w-100  " src="s2.jpeg" alt="Third slide" >
+			<div class="container">
+				<div class="card border-0 shadow my-5 ">
+					<div class="page disabled text-center " style="overflow-x:auto">
+						<div class="card-body p-4">
+							<h1 class="font-weight-light"></h1>
+							<div class="container-fluid ">
+								<h1><i style="font-size:24px" class="fa">&#xf004;</i> COMO FUNCIONA <i
+										style="font-size:24px" class="fa">&#xf004;</i></h1>
+								<div align-items="left">
+									<p>Escolha um número de 01 a 100 no quadro abaixo.<br></p>
+									<p>Um Número = Um pacote de fraldas + um mimo<br></p>
+									<p class="p-3 mb-2 bg-warning text-dark">Preencha os campos com seu nome, Whatssapp e modo de pagamento, clique em enviar. <span class="text-danger">O tamanho da fralda </span>será indicado APENAS NO FORMULÁRIO DE PREENCHIMENTO.<br>
+									</p>
+									<p class="p-3 mb-2 bg-info text-white">Você também pode pagar realizando um PIX no
+										valor de R$50,00
+										<br>CHAVE PIX <br>jumariamilennna@gmail.com
+									</p>
+									</p>
+									<p>Ao realizar o
+										PIX por favor enviar o comprovante para o Whatssapp (81) 98794-5617<br>
+									</p>
+									<p>Aproveite e deixe um recadinho para mim!<br>
+									</p>
+									<p class="text-danger strong">Os números em vermelho já foram escolhidos<br>
+									</p>
+								</div>
+
+								<p>Você pode enviar para a nossa casa ou combinar com o papai ou com a mamãe para ir
+									buscar.
+								</p>
+								<p>Nosso Endereço: Rua Ana Nery, 390, Tabatinga, Camaragibe/PE
+								</p>
+								<p>CEP:54756-470</p>
+								<br>
+								<br>
+								<h1><i style="font-size:24px" class="fa">&#xf004;</i> ESCOLHA SEU NÚMERO <i
+										style="font-size:24px" class="fa">&#xf004;</i></h1>
+								<div class="d-flex justify-content-center">
+									<div class="but">
+										<br>
+										<button type="button" id="btn0" class="btn btn-primary"
+											onclick="myFunction(this.id)">01</button>
+										<button type="button" id="btn1" class="btn btn-primary"
+											onclick="myFunction(this.id)">02</button>
+										<button type="button" id="btn2" class="btn btn-primary"
+											onclick="myFunction(this.id)">03</button>
+										<button type="button" id="btn3" class="btn btn-primary"
+											onclick="myFunction(this.id)">04</button>
+										<button type="button" id="btn4" class="btn btn-primary"
+											onclick="myFunction(this.id)">05</button>
+										<button type="button" id="btn5" class="btn btn-primary"
+											onclick="myFunction(this.id)">06</button>
+										<button type="button" id="btn6" class="btn btn-primary"
+											onclick="myFunction(this.id)">07</button>
+										<button type="button" id="btn7" class="btn btn-primary"
+											onclick="myFunction(this.id)">08</button>
+										<button type="button" id="btn8" class="btn btn-primary"
+											onclick="myFunction(this.id)">09</button>
+										<button type="button" id="btn9" class="btn btn-primary"
+											onclick="myFunction(this.id)">10</button>
+										<button type="button" id="btn10" class="btn btn-primary"
+											onclick="myFunction(this.id)">11</button>
+										<button type="button" id="btn11" class="btn btn-primary"
+											onclick="myFunction(this.id)">12</button>
+										<button type="button" id="btn12" class="btn btn-primary"
+											onclick="myFunction(this.id)">13</button>
+										<button type="button" id="btn13" class="btn btn-primary"
+											onclick="myFunction(this.id)">14</button>
+										<button type="button" id="btn14" class="btn btn-primary"
+											onclick="myFunction(this.id)">15</button>
+										<button type="button" id="btn15" class="btn btn-primary"
+											onclick="myFunction(this.id)">16</button>
+										<button type="button" id="btn16" class="btn btn-primary"
+											onclick="myFunction(this.id)">17</button>
+										<button type="button" id="btn17" class="btn btn-primary"
+											onclick="myFunction(this.id)">18</button>
+										<button type="button" id="btn18" class="btn btn-primary"
+											onclick="myFunction(this.id)">19</button>
+										<button type="button" id="btn19" class="btn btn-primary"
+											onclick="myFunction(this.id)">20</button>
+										<button type="button" id="btn20" class="btn btn-primary"
+											onclick="myFunction(this.id)">21</button>
+										<button type="button" id="btn21" class="btn btn-primary"
+											onclick="myFunction(this.id)">22</button>
+										<button type="button" id="btn22" class="btn btn-primary"
+											onclick="myFunction(this.id)">23</button>
+										<button type="button" id="btn23" class="btn btn-primary"
+											onclick="myFunction(this.id)">24</button>
+										<button type="button" id="btn24" class="btn btn-primary"
+											onclick="myFunction(this.id)">25</button>
+										<button type="button" id="btn25" class="btn btn-primary"
+											onclick="myFunction(this.id)">26</button>
+										<button type="button" id="btn26" class="btn btn-primary"
+											onclick="myFunction(this.id)">27</button>
+										<button type="button" id="btn27" class="btn btn-primary"
+											onclick="myFunction(this.id)">28</button>
+										<button type="button" id="btn28" class="btn btn-primary"
+											onclick="myFunction(this.id)">29</button>
+										<button type="button" id="btn29" class="btn btn-primary"
+											onclick="myFunction(this.id)">30</button>
+										<button type="button" id="btn30" class="btn btn-primary"
+											onclick="myFunction(this.id)">31</button>
+										<button type="button" id="btn31" class="btn btn-primary"
+											onclick="myFunction(this.id)">32</button>
+										<button type="button" id="btn32" class="btn btn-primary"
+											onclick="myFunction(this.id)">33</button>
+										<button type="button" id="btn33" class="btn btn-primary"
+											onclick="myFunction(this.id)">34</button>
+										<button type="button" id="btn34" class="btn btn-primary"
+											onclick="myFunction(this.id)">35</button>
+										<button type="button" id="btn35" class="btn btn-primary"
+											onclick="myFunction(this.id)">36</button>
+										<button type="button" id="btn36" class="btn btn-primary"
+											onclick="myFunction(this.id)">37</button>
+										<button type="button" id="btn37" class="btn btn-primary"
+											onclick="myFunction(this.id)">38</button>
+										<button type="button" id="btn38" class="btn btn-primary"
+											onclick="myFunction(this.id)">39</button>
+										<button type="button" id="btn39" class="btn btn-primary"
+											onclick="myFunction(this.id)">40</button>
+										<button type="button" id="btn40" class="btn btn-primary"
+											onclick="myFunction(this.id)">41</button>
+										<button type="button" id="btn41" class="btn btn-primary"
+											onclick="myFunction(this.id)">42</button>
+										<button type="button" id="btn42" class="btn btn-primary"
+											onclick="myFunction(this.id)">43</button>
+										<button type="button" id="btn43" class="btn btn-primary"
+											onclick="myFunction(this.id)">44</button>
+										<button type="button" id="btn44" class="btn btn-primary"
+											onclick="myFunction(this.id)">45</button>
+										<button type="button" id="btn45" class="btn btn-primary"
+											onclick="myFunction(this.id)">46</button>
+										<button type="button" id="btn46" class="btn btn-primary"
+											onclick="myFunction(this.id)">47</button>
+										<button type="button" id="btn47" class="btn btn-primary"
+											onclick="myFunction(this.id)">48</button>
+										<button type="button" id="btn48" class="btn btn-primary"
+											onclick="myFunction(this.id)">49</button>
+										<button type="button" id="btn49" class="btn btn-primary"
+											onclick="myFunction(this.id)">50</button>
+										<button type="button" id="btn50" class="btn btn-primary"
+											onclick="myFunction(this.id)">51</button>
+										<button type="button" id="btn51" class="btn btn-primary"
+											onclick="myFunction(this.id)">52</button>
+										<button type="button" id="btn52" class="btn btn-primary"
+											onclick="myFunction(this.id)">53</button>
+										<button type="button" id="btn53" class="btn btn-primary"
+											onclick="myFunction(this.id)">54</button>
+										<button type="button" id="btn54" class="btn btn-primary"
+											onclick="myFunction(this.id)">55</button>
+										<button type="button" id="btn55" class="btn btn-primary"
+											onclick="myFunction(this.id)">56</button>
+										<button type="button" id="btn56" class="btn btn-primary"
+											onclick="myFunction(this.id)">57</button>
+										<button type="button" id="btn57" class="btn btn-primary"
+											onclick="myFunction(this.id)">58</button>
+										<button type="button" id="btn58" class="btn btn-primary"
+											onclick="myFunction(this.id)">59</button>
+										<button type="button" id="btn59" class="btn btn-primary"
+											onclick="myFunction(this.id)">60</button>
+										<button type="button" id="btn60" class="btn btn-primary"
+											onclick="myFunction(this.id)">61</button>
+										<button type="button" id="btn61" class="btn btn-primary"
+											onclick="myFunction(this.id)">62</button>
+										<button type="button" id="btn62" class="btn btn-primary"
+											onclick="myFunction(this.id)">63</button>
+										<button type="button" id="btn63" class="btn btn-primary"
+											onclick="myFunction(this.id)">64</button>
+										<button type="button" id="btn64" class="btn btn-primary"
+											onclick="myFunction(this.id)">65</button>
+										<button type="button" id="btn65" class="btn btn-primary"
+											onclick="myFunction(this.id)">66</button>
+										<button type="button" id="btn66" class="btn btn-primary"
+											onclick="myFunction(this.id)">67</button>
+										<button type="button" id="btn67" class="btn btn-primary"
+											onclick="myFunction(this.id)">68</button>
+										<button type="button" id="btn68" class="btn btn-primary"
+											onclick="myFunction(this.id)">69</button>
+										<button type="button" id="btn69" class="btn btn-primary"
+											onclick="myFunction(this.id)">70</button>
+										<button type="button" id="btn70" class="btn btn-primary"
+											onclick="myFunction(this.id)">71</button>
+										<button type="button" id="btn71" class="btn btn-primary"
+											onclick="myFunction(this.id)">72</button>
+										<button type="button" id="btn72" class="btn btn-primary"
+											onclick="myFunction(this.id)">73</button>
+										<button type="button" id="btn73" class="btn btn-primary"
+											onclick="myFunction(this.id)">74</button>
+										<button type="button" id="btn74" class="btn btn-primary"
+											onclick="myFunction(this.id)">75</button>
+										<button type="button" id="btn75" class="btn btn-primary"
+											onclick="myFunction(this.id)">76</button>
+										<button type="button" id="btn76" class="btn btn-primary"
+											onclick="myFunction(this.id)">77</button>
+										<button type="button" id="btn77" class="btn btn-primary"
+											onclick="myFunction(this.id)">78</button>
+										<button type="button" id="btn78" class="btn btn-primary"
+											onclick="myFunction(this.id)">79</button>
+										<button type="button" id="btn79" class="btn btn-primary"
+											onclick="myFunction(this.id)">80</button>
+										<button type="button" id="btn80" class="btn btn-primary"
+											onclick="myFunction(this.id)">81</button>
+										<button type="button" id="btn81" class="btn btn-primary"
+											onclick="myFunction(this.id)">82</button>
+										<button type="button" id="btn82" class="btn btn-primary"
+											onclick="myFunction(this.id)">83</button>
+										<button type="button" id="btn83" class="btn btn-primary"
+											onclick="myFunction(this.id)">84</button>
+										<button type="button" id="btn84" class="btn btn-primary"
+											onclick="myFunction(this.id)">85</button>
+										<button type="button" id="btn85" class="btn btn-primary"
+											onclick="myFunction(this.id)">86</button>
+										<button type="button" id="btn86" class="btn btn-primary"
+											onclick="myFunction(this.id)">87</button>
+										<button type="button" id="btn87" class="btn btn-primary"
+											onclick="myFunction(this.id)">88</button>
+										<button type="button" id="btn88" class="btn btn-primary"
+											onclick="myFunction(this.id)">89</button>
+										<button type="button" id="btn89" class="btn btn-primary"
+											onclick="myFunction(this.id)">90</button>
+										<button type="button" id="btn90" class="btn btn-primary"
+											onclick="myFunction(this.id)">91</button>
+										<button type="button" id="btn91" class="btn btn-primary"
+											onclick="myFunction(this.id)">92</button>
+										<button type="button" id="btn92" class="btn btn-primary"
+											onclick="myFunction(this.id)">93</button>
+										<button type="button" id="btn93" class="btn btn-primary"
+											onclick="myFunction(this.id)">94</button>
+										<button type="button" id="btn94" class="btn btn-primary"
+											onclick="myFunction(this.id)">95</button>
+										<button type="button" id="btn95" class="btn btn-primary"
+											onclick="myFunction(this.id)">96</button>
+										<button type="button" id="btn96" class="btn btn-primary"
+											onclick="myFunction(this.id)">97</button>
+										<button type="button" id="btn97" class="btn btn-primary"
+											onclick="myFunction(this.id)">98</button>
+										<button type="button" id="btn98" class="btn btn-primary"
+											onclick="myFunction(this.id)">99</button>
+										<button type="button" id="btn99" class="btn btn-primary"
+											onclick="myFunction(this.id)">100</button>
+									</div>
+								</div>
+								<br>
+								<br>
+								<br>
+								<h1><i class="fa fa-gift"></i> PRÊMIO <i class="fa fa-gift"></i></h1>
+								<br>
+
+								<br>
+								<h1><i class="fa fa-gift"></i> UM PIX NO VALOR DE R$200,00 NO DIA 23/06/24 ÀS 19:00H<i
+										class="fa fa-gift"></i></h1>
+								<br>
+							</div>
+							<br />
+
+							<h3><i style="font-size:24px" class="fa">&#xf004;</i> Boa Sorte! <i style="font-size:24px"
+									class="fa">&#xf004;</i>
+							</h3>
+								<!--<img class="d-block  w-100  " src="s2.jpeg" alt="Third slide" >
 				<br>
 				<img class="d-block  w-100  " src="s1.jpeg" alt="Third slide" > -->
-</div>
- </div>
- </div>  
- </div>
-</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-<<!--
-<div class="card-body p-5">
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe width="560" height="315" src="V.m4v" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div> -->
+		<<!-- <div class="card-body p-5">
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe width="560" height="315" src="V.m4v" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div> -->
 
-<!-- carrosel Inicio -->
-<div class="container">
-  <div class="card border-0 shadow my-5 ">
-<div  class="page disabled " style="overflow-x:auto">
-	  <div class="card-body p-5 div2">
-<!--<div id="carousel" class="carousel slide " data-ride="carousel">
+			<!-- carrosel Inicio -->
+			<div class="container">
+				<div class="card border-0 shadow my-5 ">
+					<div class="page disabled " style="overflow-x:auto">
+						<div class="card-body p-5 div2">
+							<!--<div id="carousel" class="carousel slide " data-ride="carousel">
 	<ol class="carousel-indicators">
 		<li data-target="#carousel" data-slide-to="0" class="active"></li>
 		<li data-target="#carousel" data-slide-to="1"></li>
@@ -462,75 +514,79 @@ RIFA DA <br><h3> <i style="font-size:24px" class="fa">&#xf004;</i> MARIA ISABELA
 			<span class="sr-only">Next</span>
 		</a>
 </div> -->
-<!--carrosel Fim-->
- </div>
-        <p class="lead text-center"><i><b>"A única forma de multiplicar a felicidade é dividi-lá com alguém". <br /> Somos gratos em poder dividir esse momento especial com vocês!</b></i></p>
-        <p class="lead mb-0"></p>
-     </div>
-</div>
- <br />
-	    <br />
-	    <br />
-	    <br />
-	    <br />
-	 
-	   
-</section>
+							<!--carrosel Fim-->
+						</div>
+						<p class="lead text-center"><i><b>"A única forma de multiplicar a felicidade é dividi-lá com
+									alguém". <br /> Somos gratos em poder dividir esse momento especial com
+									vocês!</b></i></p>
+						<p class="lead mb-0"></p>
+					</div>
+				</div>
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+
+
+	</section>
 </body>
+
 </html>
 
 
 <!-- Modal- Abre o popUp para colocar dados Nome e Telefone´ja recebeu o valor do numero -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Coloque seus dados para reservar o número</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
- 
+				<p class="modal-title" id="exampleModalLabel">Coloque seus dados para reservar o número</p>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
 			</div>
 			<div class="modal-title text-center ">
-				<h5 id="fralda" ></h5>
+				<p id="fralda"></p>
 			</div>
-	<div class="modal-body">
+			<div class="modal-body">
 
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSfrq2HPxTdZi9glxHVNvcykxdnhIL5EkRIhU23rwPSSouyB3g/formResponse"   method="POST">
-	
-	<div class="form-group">
-		<input TYPE="hidden" id="fraldaB" value="11" name="entry.1247750254"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
-	</div>
-	<div class="form-group">
-		<label for="exampleInputEmail1">Numero escolhido</label>
-		<input id="numero" value="11" name="entry.1485944018" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
-		<small id="emailHelp" class="form-text text-muted"></small>
-	</div>
-	<div class="form-group">
-		<label for="exampleInputEmail1">Nome</label>
-		<input type="text" name="entry.2017940765" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Insira seu nome Completo" required>
-		<small id="emailHelp" class="form-text text-muted"></small>
-	</div>
-	<div class="form-group">
-		<label for="exampleInputPassword1">Telefone para contato / Whatssapp</label>
-		<input type="i" id="email" name="entry.359780944"  placeholder=" Ex: (xx) 99999-9999"  class="form-control" required>
-	</div>
-    <div class="form-group">
-		<label for="exampleInputPassword1">Mande um recadinho para o Bebê</label>
-		<input type="i" id="text" name="entry.1587500253" class="form-control" >
-	</div>
-	<div class="form-group">
-		<label>Você deseja pagar com PIX? (Escreva SiM ou Não)</label>
-    	<input type="i" id="text" name="entry.1313777897" class="form-control" required >
-	</div>
-		
-    
+				<form
+					action="https://docs.google.com/forms/d/e/1FAIpQLSfrq2HPxTdZi9glxHVNvcykxdnhIL5EkRIhU23rwPSSouyB3g/formResponse"
+					method="POST">
 
-	
+					<div class="form-group">
+						<input TYPE="hidden" id="fraldaB" value="11" name="entry.1247750254" class="form-control"
+						id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Numero escolhido</label>
+						<input id="numero" value="11" name="entry.1485944018" class="form-control"
+							id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
+						<small id="emailHelp" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Nome</label>
+						<input type="text" name="entry.2017940765" class="form-control" id="exampleInputEmail1"
+							aria-describedby="emailHelp" placeholder="Insira seu nome Completo" required>
+						<small id="emailHelp" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Telefone para contato / Whatssapp</label>
+						<input type="i" id="email" name="entry.359780944" placeholder=" Ex: (xx) 99999-9999"
+							class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Mande um recadinho para o Bebê</label>
+						<input type="i" id="text" name="entry.1587500253" class="form-control">
+					</div>
+					<div class="form-group">
+						<label>Você deseja pagar com PIX? (Escreva SiM ou Não)</label>
+						<input type="i" id="text" name="entry.1313777897" class="form-control" required>
+					</div>
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</form>
 
-
-	<button type="submit" class="btn btn-primary"  >Enviar</button>
-</form>
-
-<!--<body onload='window.history.back();'> voltar pagina-->
-</div>
+				<!--<body onload='window.history.back();'> voltar pagina-->
+			</div>
