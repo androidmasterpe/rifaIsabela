@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#parallaxBar1 {
+    height: 100%;
+    background: url('fundo.png');
+    margin-top: -35px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.but {
+    max-width: 500px;
+}
+
+.butT {
+    max-width: 400px;
+}
+
+.imgwh {
+    max-width: 50%;
+    padding: 1em;
+}
+
+.headimage>img {
+    width: 100%;
+}
+
+#div1 {
+    height: auto;
+    max-width: 750px;
+    padding: 1em;
+    margin: 3px;
+}
+
+#div2 {
+    height: 300px;
+    max-width: 750px;
+    padding: 1em;
+    margin: auto;
+}
